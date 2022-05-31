@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
-
+{% load static %}
 <head>
     <title>{% block head_title %}Blog{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
@@ -10,87 +9,8 @@
 </head>
 
 <body>
-<!-- 상단 네비게이트 바 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">TK Web</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./blog_list.html">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./about_me.html">About Me</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-<!-- 로그인 Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log In</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <!-- 구글, 이메일 로그인 버튼-->
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-outline-dark btn-block btn-sm"><i class="fa-brands fa-google"></i> Log in with Google</button>
-                        <button type="button" class="btn btn-outline-dark btn-block btn-sm"><i class="fa-solid fa-square-envelope"></i> Log in with E-mail</button>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- 이메일 회원가입 버튼-->
-                        <button type="button" class="btn btn-outline-dark btn-block btn-sm"><i class="fa-solid fa-square-envelope"></i> Sign Up with E-mail</button>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+{% include 'blog/navbar.html' %}
 
 
 <div class="container my-3">
@@ -140,13 +60,7 @@
     </div>
 </div>
 
-<!-- 푸터 (Footer) -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">
-            Copyright &copy; TK Blog 2022 .</p>
-    </div>
-</footer>
+{% include 'blog/footer.html' %}
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
