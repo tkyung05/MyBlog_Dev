@@ -1,7 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block main_area %}
-    <h1>Blog {% if category %} <span class="badge badge-info">{{ category }}</span></h1>{% endif %} </h1>
+    <h1>Blog
+        {% if category %} <i class="fa-solid fa-book-bookmark"></i> <span class="badge badge-light">{{ category }} ({{ category.post_set.count }})</span>{% endif %}
+        {% if tag %} <i class="fa-solid fa-hashtag"></i> </i> <span class="badge badge-light">{{ tag }} ({{ tag.post_set.count }})</span></h1>{% endif %} </h1>
 
     {% if post_list.count %}
 
@@ -27,7 +29,7 @@
                     <p class="card-text">{{ p.content | truncatewords:45 }}</p>
 
                     {% if p.tags.exists %}
-                        <i class="fas fa=tags"></i>
+                        <i class="fa-solid fa-hashtag"></i>
                         {% for tag in p.tags.all %}
                             <a href="{{ tag.get_absolute_url }}">
                                 <span class="badge badge-pill badge-light">{{ tag }}</span></a>
