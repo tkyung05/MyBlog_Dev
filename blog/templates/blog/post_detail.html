@@ -10,9 +10,9 @@
         <!-- Title-->
         <h1 class="mb-4">{{ post.title }}</h1>
         {% if post.category %}
-            <span class="badge badge-secondary float-right">{{ post.category }}</span>
+            <h5><span class="badge badge-secondary float-right">{{ post.category }}</span></h5>
         {% else %}
-            <span class="badge badge-secondary float-right">미분류</span>
+            <h5><span class="badge badge-secondary float-right">미분류</span></h5>
         {% endif %}
         <h5 class="text-muted">{{ post.hook_text }}</h5>
 
