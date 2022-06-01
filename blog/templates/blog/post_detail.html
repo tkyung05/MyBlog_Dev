@@ -9,6 +9,11 @@
     <div id="post-area">
         <!-- Title-->
         <h1 class="mb-4">{{ post.title }}</h1>
+        {% if post.category %}
+            <span class="badge badge-secondary float-right">{{ post.category }}</span>
+        {% else %}
+            <span class="badge badge-secondary float-right">미분류</span>
+        {% endif %}
         <h5 class="text-muted">{{ post.hook_text }}</h5>
 
         <!-- Author -->
