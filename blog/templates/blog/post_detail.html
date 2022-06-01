@@ -10,9 +10,9 @@
         <!-- Title-->
         <h1 class="mb-4">{{ post.title }}</h1>
         {% if post.category %}
-            <h5><span class="badge badge-secondary float-right">{{ post.category }}</span></h5>
+            <h4><span class="badge badge-pill badge-secondary float-right">{{ post.category }}</span></h4>
         {% else %}
-            <h5><span class="badge badge-secondary float-right">미분류</span></h5>
+            <h4><span class="badge badge-pill badge-secondary float-right">미분류</span></h4>
         {% endif %}
         <h5 class="text-muted">{{ post.hook_text }}</h5>
 
@@ -45,6 +45,16 @@
             <a href="{{ post.file_upload.url }}" class="btn btn-outline-primary" role="button"download>
                 <i class="fa-solid fa-file-arrow-down"></i>
                 {{ post.get_file_name }}</a>
+        {% endif %}
+
+        {% if post.tags.exists %}
+            <i class="fas fa=tags"></i>
+            {% for tag in post.tags.all %}
+                <a href="{{ tag.get_absolute_url }}">
+                    <span class="badge badge-pill badge-light">{{ tag }}</span></a>
+            {% endfor %}
+            <br/>
+            <br/>
         {% endif %}
 
         <hr>

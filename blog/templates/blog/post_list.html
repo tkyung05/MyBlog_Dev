@@ -6,7 +6,7 @@
     {% if post_list.count %}
 
         {% for p in post_list %}
-            <!-- 블로그 포스트 -->
+            <!-- 블로그 포스트 미리 보기 -->
             <div class="card mb-4" id="post-{{ p.pk }}">
                 {% if p.head_image %}
                     <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" />
@@ -16,16 +16,27 @@
 
                 <div class="card-body">
                     {% if p.category %}
-                        <h5> <span class="badge badge-secondary float-right">{{ p.category }}</span> </h5>
+                        <h4> <span class="badge badge-pill badge-secondary float-right">{{ p.category }}</span> </h4>
                     {% else %}
-                        <h5> <span class="badge badge-secondary float-right">미분류</span> </h5>
+                        <h4> <span class="badge badge-pill badge-secondary float-right">미분류</span> </h4>
                     {% endif %}
                     <h2 class="card-title">{{ p.title }}</h2>
                     {% if p.hook_text %}
                         <h5 class="text-muted">{{ p.hook_text }}</h5>
                     {% endif %}
                     <p class="card-text">{{ p.content | truncatewords:45 }}</p>
-                    <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
+
+                    {% if p.tags.exists %}
+                        <i class="fas fa=tags"></i>
+                        {% for tag in p.tags.all %}
+                            <a href="{{ tag.get_absolute_url }}">
+                                <span class="badge badge-pill badge-light">{{ tag }}</span></a>
+                        {% endfor %}
+                        <br/>
+                        <br/>
+                    {% endif %}
+
+                    <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more</a>
                 </div>
                 <div class="card-footer text-muted">
                     Posted on {{ p.created_at }} by
