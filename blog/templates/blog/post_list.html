@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
 
 {% block main_area %}
+
+    <a class="btn btn-info btn-sm float-right" href="/blog/create_post/" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기</a>
     <h1>Blog
         {% if category %} <i class="fa-solid fa-book-bookmark"></i> <span class="badge badge-light">{{ category }} ({{ category.post_set.count }})</span>{% endif %}
         {% if tag %} <i class="fa-solid fa-hashtag"></i> </i> <span class="badge badge-light">{{ tag }} ({{ tag.post_set.count }})</span></h1>{% endif %} </h1>
