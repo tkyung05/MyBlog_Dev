@@ -2,7 +2,9 @@
 
 {% block main_area %}
 
-    <a class="btn btn-info btn-sm float-right" href="/blog/create_post/" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기</a>
+    {% if user.is_superuser or user.is_staff %}
+        <a class="btn btn-info btn-sm float-right" href="/blog/create_post/" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기</a>
+    {% endif %}
     <h1>Blog
         {% if category %} <i class="fa-solid fa-book-bookmark"></i> <span class="badge badge-light">{{ category }} ({{ category.post_set.count }})</span>{% endif %}
         {% if tag %} <i class="fa-solid fa-hashtag"></i> </i> <span class="badge badge-light">{{ tag }} ({{ tag.post_set.count }})</span></h1>{% endif %} </h1>
@@ -52,21 +54,4 @@
     {% else %}
         <h3>아직 게시물이 없습니다.</h3>
     {% endif %}
-
-
-
-    <!-- 페이지네이션 (Pagination) -->
-    <nav aria-label="Pagination">
-        <hr class="my-0" />
-        <ul class="pagination justify-content-center my-4">
-            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
-                                              aria-disabled="true">Newer</a></li>
-            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-            <li class="page-item"><a class="page-link" href="#!">2</a></li>
-            <li class="page-item"><a class="page-link" href="#!">3</a></li>
-            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-            <li class="page-item"><a class="page-link" href="#!">15</a></li>
-            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-        </ul>
-    </nav>
 {% endblock %}
